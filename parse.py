@@ -5,10 +5,10 @@ import json
 import requests
 reload(sys)
 sys.setdefaultencoding("utf-8")
-from BeautifulSoup import BeautifulSoup
+from bs4 import BeautifulSoup
 import urllib, urllib2
 
-url = "http://websys.secr.ncku.edu.tw/act/index.php?c=auth"
+url = "https://activity.ncku.edu.tw/index.php?c=auth"
 data = urllib2.urlopen(url)
 soup = BeautifulSoup(data)
 
@@ -42,13 +42,13 @@ for row in table.findAll("tr"):
 			event['time'] = elements.contents[0].strip()
 			print json.dumps(event, encoding='UTF-8', ensure_ascii=False)
 
-
-			url = 'http://52.192.20.250/chat/create/robot/'
+			"""post to server"""
+			"""url = 'http://52.192.20.250/chat/create/robot/'
 			payload = {'robot_id':108143422899450,'content':event['name'],'lng':0,'lat':0}
 			#payload = json.dumps(event, encoding='UTF-8', ensure_ascii=False)
 			r = requests.post(url, data=payload)
 			print r.text
-			print r.status_code
+			print r.status_code"""
 			#print event
 
 
